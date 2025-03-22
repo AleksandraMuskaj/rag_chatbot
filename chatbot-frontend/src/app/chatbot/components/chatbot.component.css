@@ -1,0 +1,220 @@
+/* Optionally import a nicer font (e.g., Open Sans) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:host, .chat-container, .chat-header, .chat-messages, .chat-input {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Floating button */
+.chatbot-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #0070ad;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.chatbot-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Chat container */
+.chat-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 400px;
+  max-height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  resize: both;
+  overflow: auto;
+  min-width: 250px;
+  min-height: 300px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chat-container.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Chat Header */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #0070ad;
+  color: white;
+  font-size: 14px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.chat-header h2 {
+  font-weight: bold;
+  margin: 0;
+  flex-grow: 1;
+  font-size: 16px;
+}
+
+/* Icon buttons in the header */
+.chat-controls {
+  display: flex;
+  align-items: center;
+}
+
+/* Generic icon button style */
+.icon-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 6px;
+  transition: color 0.2s ease, transform 0.1s ease-in-out;
+}
+
+.icon-button:hover {
+  color: #ddd;
+  transform: scale(1.1);
+}
+
+/* Chat messages container */
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Message styling */
+.user-message, .bot-message {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #0084ff;
+  color: white;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background-color: #e0e0e0;
+  color: #333;
+  text-align: left;
+}
+
+/* Chat input */
+.chat-input {
+  flex-shrink: 0;
+  display: flex;
+  padding: 12px;
+  background-color: white;
+  border-top: 1px solid #ddd;
+}
+
+.input-field {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.send-button {
+  background-color: #0070ad;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 8px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.send-button:hover {
+  background-color: #005f9e;
+}
+
+/* Typing indicator container */
+.typing-indicator-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+/* Three-dot typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.typing-indicator > div {
+  width: 6px;
+  height: 6px;
+  background-color: #555;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typingIndicator 1.4s infinite both;
+}
+
+.typing-indicator > div:nth-child(1) {
+  animation-delay: 0s;
+}
+.typing-indicator > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-indicator > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingIndicator {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-5px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 500px) {
+  .chat-container {
+    width: 95%;
+    right: 2.5%;
+    bottom: 70px;
+    max-height: 80%;
+  }
+}

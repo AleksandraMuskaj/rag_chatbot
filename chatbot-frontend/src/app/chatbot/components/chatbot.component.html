@@ -1,0 +1,58 @@
+<!-- Chatbot Toggle Button -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<div *ngIf="!istChatOffen" class="chatbot-icon" (click)="chatUmschalten()">
+  💬
+</div>
+
+<!-- Chat Container -->
+<div class="chat-container" [class.open]="istChatOffen" *ngIf="istChatOffen">
+  <div class="chat-header">
+    <h2>Chatbot</h2>
+    <div class="chat-controls">
+      <button class="icon-button" (click)="chatModal.openModal()">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button class="icon-button close-button" (click)="chatUmschalten()">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Chat Messages -->
+  <div class="chat-messages" #nachrichtenContainer>
+    <div
+      *ngFor="let message of nachrichten"
+      [ngClass]="{'user-message': message.istNutzer, 'bot-message': !message.istNutzer}"
+    >
+      {{ message.text }}
+    </div>
+
+    <!-- Typing Indicator (shown while isGenerating = true) -->
+    <div *ngIf="generiertAntwort" class="bot-message typing-indicator-container">
+      <div class="typing-indicator">
+        <div></div><div></div><div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Input -->
+  <div class="chat-input">
+    <input
+      type="text"
+      #chatEingabe
+      [(ngModel)]="nutzerNachricht"
+      (keyup.enter)="sendeNachricht()"
+      placeholder="Frage stellen..."
+      class="input-field"
+    />
+    <button (click)="sendeNachricht()" class="send-button">
+      Senden
+    </button>
+  </div>
+</div>
+
+<app-chat-loeschen-modal #chatModal (chatGeloescht)="chatGeloescht()"></app-chat-loeschen-modal>

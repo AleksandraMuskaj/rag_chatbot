@@ -1,0 +1,12 @@
+<div class="import-container">
+  <h2>Dokument Importieren</h2>
+  <input type="file" (change)="onFileSelected($event)" />
+  <p class="status">{{ importStatus }}</p>
+  <div *ngIf="importedDocument" class="document-preview">
+    <h3>Importiertes Dokument</h3>
+    <p><strong>Inhalt:</strong></p>
+    <p>{{ importedDocument.content }}</p>
+    <p><strong>Embedding (erste 10 Werte):</strong></p>
+    <p>{{ importedDocument.chunks[0].embedding.slice(0, 10).join(', ') }} ...</p>
+  </div>
+</div>

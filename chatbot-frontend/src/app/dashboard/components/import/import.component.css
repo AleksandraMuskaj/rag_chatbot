@@ -1,0 +1,31 @@
+.import-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+.import-container h2 {
+  margin-bottom: 10px;
+}
+
+.status {
+  text-align: center;
+  font-style: italic;
+  color: #0070ad;
+}
+
+.document-preview {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.document-preview h3 {
+  margin-top: 0;
+}
